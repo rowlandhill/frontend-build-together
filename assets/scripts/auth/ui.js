@@ -35,7 +35,8 @@ const signOutFailure = (error) => {
 const createProjectSuccess = (data) => {
   console.log('createProjectSuccess is ', data)
   $('#createProjectContent').text(data.project.title + ', ' + data.project.body)
-  console.log('project_id is ', data.project.project_id)
+  $('#project-id').val(data.project.id)
+  console.log('project_id is ', data.project.id)
   console.log('user_id is ', data.project.user.id)
 }
 
@@ -45,7 +46,7 @@ const createProjectFailure = (error) => {
 
 const createTaskSuccess = (data) => {
   console.log('createTaskSuccess is ', data)
-  $('#createTaskContent').text(data.tasks.name + ', ' + data.tasks.description)
+  $('#createTaskContent').text(data.task.name + ', ' + data.task.description)
 }
 
 const createTaskFailure = (error) => {
