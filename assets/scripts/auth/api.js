@@ -52,11 +52,58 @@ const createProject = (data) => {
   })
 }
 
+const getAllProjects = () => {
+  // console.log('get index', data)
+  return $.ajax({
+    url: config.apiOrigin + '/projects',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const createTask = (data) => {
   console.log('createTask data is', data)
   return $.ajax({
     url: config.apiOrigin + '/tasks/',
     method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const getAllTasks = () => {
+  // console.log('get index', data)
+  return $.ajax({
+    url: config.apiOrigin + '/tasks',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const getProject = (id) => {
+  console.log('stringy ', id.project.id)
+  // event.preventDefault()
+  return $.ajax({
+    url: config.apiOrigin + '/projects/' + id.project.id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateProject = (data, newProject) => {
+  // console.log(data + 'PATCH TEST DATA')
+  event.preventDefault()
+  return $.ajax({
+    url: config.apiOrigin + '/projects/' + newProject,
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
@@ -70,5 +117,9 @@ module.exports = {
   changePassword,
   signOut,
   createProject,
-  createTask
+  createTask,
+  getAllTasks,
+  getAllProjects,
+  getProject,
+  updateProject
 }

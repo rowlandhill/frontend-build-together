@@ -57,10 +57,33 @@ const onCreateTask = function (event) {
   const data = getFormFields(event.target)
   api.createTask(data)
     .then(ui.createTaskSuccess)
-    // .then(api.createTask(data))
-    //   .then(ui.createTaskSuccess)
-    //   .catch(ui.createTaskFailure)
-      .catch(ui.createTaskFailure)
+    .catch(ui.createTaskFailure)
+}
+
+const onGetAllProjects = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.getAllProjects(data)
+    .then(ui.getAllProjectsSuccess)
+    .catch(ui.getAllProjectsFailure)
+}
+
+const onGetAllTasks = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.getAllTasks(data)
+    .then(ui.getAllTasksSuccess)
+    .catch(ui.getAllTasksFailure)
+}
+
+const onGetProject = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log('onGetProject data is ', data)
+  console.log('data.project.id is ', data.project.id)
+  api.getProject(data)
+    .then(ui.getProjectSuccess)
+    .catch(ui.getProjectFailure)
 }
 
 $(function () {
@@ -80,6 +103,11 @@ $(function () {
   })
 })
 
+const appendCreateTask = (event) => {
+  event.preventDefault()
+  $("<div class='form-group'><input class='form-control' type='text' name='task[name]' placeholder='task name'></div><div class='form-group'><textarea class='form-control' name='task[description]' rows='3' placeholder='add description here'></textarea></div>").appendTo('#createTasks')
+}
+
 const addHandlers = () => {
   $('#register-form').on('submit', onSignUp)
   $('#login-form').on('submit', onSignIn)
@@ -87,6 +115,10 @@ const addHandlers = () => {
   $('#change-password-form').on('submit', onChangePassword)
   $('#createProject').on('submit', onCreateProject)
   $('#createTasks').on('submit', onCreateTask)
+  $('#add-task').on('click', appendCreateTask)
+  $('#get-all-projects').on('click', onGetAllProjects)
+  $('#get-all-tasks').on('click', onGetAllTasks)
+  $('#getProject').on('submit', onGetProject)
 }
 
 module.exports = {

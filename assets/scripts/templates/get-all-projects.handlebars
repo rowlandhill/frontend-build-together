@@ -1,0 +1,22 @@
+<!-- <div class="text-center"> -->
+
+{{#each projects as |project|}}
+
+  <div data-id="{{project.id}}" class="project-post col-md-12">
+    <ul style="list-style-type: none;">
+      <li><h4><strong>Project: {{project.title}}</strong></h4></li>
+      <li class="desc"><strong>Project Description:</strong> {{project.body}}</li>
+  </ul>
+ </div>
+ <div class="tasks col-md-12">
+   <ul>
+     {{#each tasks as |task|}}
+     <li><h5><strong>Task: {{task.name}}</strong></h5></li>
+     <li class="desc"><strong>Task Description:</strong> {{task.description}}</li>
+      {{/each}}
+    </ul>
+  </div>
+<br>
+
+
+{{/each}}

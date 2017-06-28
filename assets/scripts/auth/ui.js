@@ -1,10 +1,10 @@
 'use strict'
 
 const store = require('../store.js')
-// const api = require('./api.js')
-// const showRecipesTemplate = require('../templates/get-all-recipes.handlebars')
-// const showOneRecipeTemplate = require('../templates/get-one-recipe.handlebars')
-// const getFormFields = require(`../../../lib/get-form-fields`)
+const api = require('./api.js')
+const showProjectsTemplate = require('../templates/get-all-projects.handlebars')
+const showOneProjectTemplate = require('../templates/get-one-project.handlebars')
+const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
   console.log(data + 'sign-up success')
@@ -32,6 +32,33 @@ const signOutFailure = (error) => {
   console.error('sign out fail ', error)
 }
 
+const onUpdateProject = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const newProject = $(event.target).attr('data-id')
+  console.log('event.target is ' + data)
+  console.log('newProject is ', newProject)
+  $('.update').trigger('reset')
+  refreshProject()
+  api.updateProject(data, newProject)
+    .then(updateProjectSuccess)
+    .catch(updateProjectFailure)
+    // .then(() => {
+    //   api.getProject()
+    //     .then(getProjectSuccess)
+    //     .catch(getProjectFailure)
+    //     .catch(updateProjectFailure)
+    // })
+}
+
+const refreshProject = (data) => {
+  const showProjectHtml = showProjectsTemplate({ projects: store.projectList })
+  $('#getAllProjectsContent').empty()
+  $('#getAllProjectsContent').append(showProjectHtml)
+  $('.update').on('submit', onUpdateProject)
+  // $('.destroy').on('click', onDeleteProject)
+}
+
 const createProjectSuccess = (data) => {
   console.log('createProjectSuccess is ', data)
   $('#createProjectContent').text(data.project.title + ', ' + data.project.body)
@@ -44,13 +71,61 @@ const createProjectFailure = (error) => {
   console.error('createProjectFailure is ', error)
 }
 
+const getAllProjectsSuccess = (data) => {
+  store.projectList = data.projects
+  console.log('get all projects success is ', data)
+  $('#getAllProjectsContent').text(data)
+  console.log('store.projectlist data is ', store.projectList)
+  refreshProject(data)
+}
+
+const getAllProjectsFailure = (error) => {
+  console.log('getAllProjectsFailure is ', error)
+}
+
 const createTaskSuccess = (data) => {
   console.log('createTaskSuccess is ', data)
+  console.log(data.task.name)
   $('#createTaskContent').text(data.task.name + ', ' + data.task.description)
 }
 
 const createTaskFailure = (error) => {
   console.error('createTaskFailure is ', error)
+}
+
+const getAllTasksSuccess = (data) => {
+  console.log('get all tasks success is ', data)
+  $('#getAllTasksContent').text(data)
+  console.log(data.tasks[0].project.id)
+}
+
+const getAllTasksFailure = (error) => {
+  console.log('getAllTasksFailure is ', error)
+}
+
+const getProjectSuccess = (data) => {
+  store.singleProject = data.project
+  console.log('get project success is ', data)
+  console.log('getProjectSuccess tasks ', data.project.tasks)
+  const showOneProjectHtml = showOneProjectTemplate({ project: store.singleProject })
+  $('#getProjectContent').html(showOneProjectHtml)
+  $('.update').on('submit', onUpdateProject)
+  // $('#getProjectContent').text(data)
+}
+
+const getProjectFailure = (error) => {
+  console.log('getProjectTasksFailure is ', error)
+}
+
+const updateProjectSuccess = (response) => {
+  console.log('success is ', response.project.id)
+  api.getProject(response)
+    .then(getProjectSuccess)
+    .catch(getProjectFailure)
+}
+
+const updateProjectFailure = (error) => {
+  console.log(error)
 }
 
 module.exports = {
@@ -63,5 +138,11 @@ module.exports = {
   createProjectSuccess,
   createProjectFailure,
   createTaskSuccess,
-  createTaskFailure
+  createTaskFailure,
+  getAllProjectsSuccess,
+  getAllProjectsFailure,
+  getAllTasksSuccess,
+  getAllTasksFailure,
+  getProjectSuccess,
+  getProjectFailure
 }
