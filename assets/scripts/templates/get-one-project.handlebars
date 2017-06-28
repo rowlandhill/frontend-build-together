@@ -26,6 +26,7 @@
      <ul>
        <li><h5><strong>Task: {{task.name}}</strong></h5></li>
        <li class="desc"><strong>Task Description:</strong> {{task.description}}</li>
+       <li class="iscomplete"><strong>Finished? :</strong> {{task.iscomplete}}</li>
       </ul>
       <form class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
 
@@ -43,7 +44,7 @@
        <br>
        <div class="destroyTask">
          <br>
-          <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">delete task</button>
+          <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">task completed</button>
         </div>
        </form>
     </div>

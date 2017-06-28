@@ -76,7 +76,7 @@ const refreshProject = (data) => {
   $('.getAllProjectsContent').append(showProjectHtml)
   $('.updateProject').on('submit', onUpdateProject)
   $('.destroyProject').on('click', onDeleteProject)
-  // $('.destroyTask').on('click', onDeleteTask)
+  $('.destroyTask').on('click', onDeleteTask)
 }
 
 const createProjectSuccess = (data) => {
@@ -128,12 +128,13 @@ const getProjectSuccess = (data) => {
   store.singleProject = data.project
   console.log('get project success is ', data)
   console.log('getProjectSuccess tasks ', data.project.tasks)
+  console.log('getProjectSuccess iscomplete ', data.project.tasks.iscomplete)
   const showOneProjectHtml = showOneProjectTemplate({ project: store.singleProject })
   $('#getProjectContent').html(showOneProjectHtml)
   $('.updateProject').on('submit', onUpdateProject)
   $('.updateTasks').on('submit', onUpdateTask)
   $('.destroyProject').on('click', onDeleteProject)
-  // $('.destroyTask').on('click', onDeleteTask)
+  $('.destroyTask').on('click', onDeleteTask)
   // $('#getProjectContent').text(data)
 }
 
@@ -192,13 +193,38 @@ const onDeleteProject = (event) => {
       // .catch(updateRecipeFailure)
 }
 
-// cont onDeleteTask
+const onDeleteTask = (event) => {
+  event.preventDefault()
+  console.log('onDeleteTask firing')
+  const removeTask = $(event.target).attr('data-id')
+  // store.projectList = store.projectList.filter((project) => {
+  //   return String(project.id) !== String(removeProject)
+  // })
+  // refreshProject()
+  api.deleteTask(removeTask)
+    .then(deleteTaskSuccess)
+    .catch(deleteTaskFailure)
+    // .then(() => {
+    //   api.getAllProjects()
+    //     .then(getAllProjectsSuccess)
+    //     .catch(getAllProjectsFailure)
+    // })
+      // .catch(updateRecipeFailure)
+}
 
 const deleteProjectSuccess = (response) => {
-  console.log('deleteProjectSucces response is ', response)
+  console.log('deleteProjectSuccess response is ', response)
 }
 
 const deleteProjectFailure = (error) => {
+  console.log(error)
+}
+
+const deleteTaskSuccess = (response) => {
+  console.log('deleteTaskSuccess response is ', response)
+}
+
+const deleteTaskFailure = (error) => {
   console.log(error)
 }
 
@@ -222,5 +248,7 @@ module.exports = {
   updateTaskSuccess,
   updateTaskFailure,
   deleteProjectSuccess,
-  deleteProjectFailure
+  deleteProjectFailure,
+  deleteTaskSuccess,
+  deleteTaskFailure
 }
