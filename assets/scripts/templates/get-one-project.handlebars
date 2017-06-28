@@ -4,14 +4,14 @@
       <li class="desc"><p><strong>Project Description:</strong> {{project.body}}</p></li>
     </ul>
    </div>
-   <form class="update" id="{{project.id}}" data-id="{{project.id}}">
+   <form class="updateProject" id="{{project.id}}" data-id="{{project.id}}">
 
     <div class="container-fluid">
       <br>
-       <input class="form-control handlebars-update" type="text" name="project[title]" id="handlebars-project-name" placeholder="update project name">
+       <input class="form-control handlebars-update" type="text" name="project[title]" id="handlebars-project-title" placeholder="update project name">
        <br>
        <div class="form-group">
-     <textarea class="form-control handlebars-update" name="project[body]" id="handlebars-project-desc" rows="7" placeholder="update description here"></textarea>
+     <textarea class="form-control handlebars-update" name="project[body]" id="handlebars-project-body" rows="7" placeholder="update description here"></textarea>
     </div>
     <input data-id="{{project.id}}" type="submit" class="btn btn-default" value="update">
     <br>
@@ -27,5 +27,24 @@
        <li><h5><strong>Task: {{task.name}}</strong></h5></li>
        <li class="desc"><strong>Task Description:</strong> {{task.description}}</li>
       </ul>
+      <form class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
+
+       <div class="container-fluid">
+         <br>
+          <input class="form-control handlebars-update" type="text" name="task[name]" id="handlebars-task-name" placeholder="update task name">
+          <br>
+          <div class="form-group">
+        <textarea class="form-control handlebars-update" name="task[description]" id="handlebars-task-desc" rows="7" placeholder="update description here"></textarea>
+       </div>
+       <div class="form-group">
+           <input type="radio" name="task[iscomplete]" value="true"> Complete<br>
+         </div>
+       <input data-id="{{task.id}}" type="submit" class="btn btn-default" value="update">
+       <br>
+       <div class="destroy">
+         <br>
+          <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">delete</button>
+        </div>
+       </form>
     </div>
 {{/each}}

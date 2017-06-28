@@ -38,7 +38,7 @@ const onUpdateProject = (event) => {
   const newProject = $(event.target).attr('data-id')
   console.log('event.target is ' + data)
   console.log('newProject is ', newProject)
-  $('.update').trigger('reset')
+  $('.updateProject').trigger('reset')
   refreshProject()
   api.updateProject(data, newProject)
     .then(updateProjectSuccess)
@@ -51,11 +51,30 @@ const onUpdateProject = (event) => {
     // })
 }
 
+const onUpdateTask = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const newTask = $(event.target).attr('data-id')
+  console.log('event.target is ' + data)
+  console.log('newProject is ', newTask)
+  $('.updateProject').trigger('reset')
+  refreshProject()
+  api.updateTask(data, newTask)
+    .then(updateProjectSuccess)
+    .catch(updateTaskFailure)
+    // .then(() => {
+    //   api.getProject()
+    //     .then(getProjectSuccess)
+    //     .catch(getProjectFailure)
+    //     .catch(updateProjectFailure)
+    // })
+}
+
 const refreshProject = (data) => {
   const showProjectHtml = showProjectsTemplate({ projects: store.projectList })
-  $('#getAllProjectsContent').empty()
-  $('#getAllProjectsContent').append(showProjectHtml)
-  $('.update').on('submit', onUpdateProject)
+  $('.getAllProjectsContent').empty()
+  $('.getAllProjectsContent').append(showProjectHtml)
+  $('.updateProject').on('submit', onUpdateProject)
   // $('.destroy').on('click', onDeleteProject)
 }
 
@@ -77,6 +96,7 @@ const getAllProjectsSuccess = (data) => {
   $('#getAllProjectsContent').text(data)
   console.log('store.projectlist data is ', store.projectList)
   refreshProject(data)
+  $('.seeMore').on('submit', onGetSingleProject)
 }
 
 const getAllProjectsFailure = (error) => {
@@ -109,7 +129,8 @@ const getProjectSuccess = (data) => {
   console.log('getProjectSuccess tasks ', data.project.tasks)
   const showOneProjectHtml = showOneProjectTemplate({ project: store.singleProject })
   $('#getProjectContent').html(showOneProjectHtml)
-  $('.update').on('submit', onUpdateProject)
+  $('.updateProject').on('submit', onUpdateProject)
+  $('.updateTasks').on('submit', onUpdateTask)
   // $('#getProjectContent').text(data)
 }
 
@@ -128,6 +149,27 @@ const updateProjectFailure = (error) => {
   console.log(error)
 }
 
+const updateTaskSuccess = (response) => {
+  console.log('success is ', response)
+  api.getProject(response)
+    .then(getProjectSuccess)
+    .catch(getProjectFailure)
+}
+
+const updateTaskFailure = (error) => {
+  console.log(error)
+}
+
+const onGetSingleProject = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log('onGetProject data is ', data)
+  console.log('data.project.id is ', data.project.id)
+  api.getProject(data)
+    .then(getProjectSuccess)
+    .catch(getProjectFailure)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -144,5 +186,7 @@ module.exports = {
   getAllTasksSuccess,
   getAllTasksFailure,
   getProjectSuccess,
-  getProjectFailure
+  getProjectFailure,
+  updateTaskSuccess,
+  updateTaskFailure
 }
