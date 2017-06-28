@@ -124,6 +124,18 @@ const updateTask = (data, newTask) => {
   })
 }
 
+const deleteProject = (id) => {
+  event.preventDefault()
+  console.log('deleteProject firing')
+  return $.ajax({
+    url: config.apiOrigin + '/projects/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -135,5 +147,6 @@ module.exports = {
   getAllProjects,
   getProject,
   updateProject,
-  updateTask
+  updateTask,
+  deleteProject
 }

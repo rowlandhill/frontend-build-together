@@ -75,7 +75,8 @@ const refreshProject = (data) => {
   $('.getAllProjectsContent').empty()
   $('.getAllProjectsContent').append(showProjectHtml)
   $('.updateProject').on('submit', onUpdateProject)
-  // $('.destroy').on('click', onDeleteProject)
+  $('.destroyProject').on('click', onDeleteProject)
+  // $('.destroyTask').on('click', onDeleteTask)
 }
 
 const createProjectSuccess = (data) => {
@@ -131,6 +132,8 @@ const getProjectSuccess = (data) => {
   $('#getProjectContent').html(showOneProjectHtml)
   $('.updateProject').on('submit', onUpdateProject)
   $('.updateTasks').on('submit', onUpdateTask)
+  $('.destroyProject').on('click', onDeleteProject)
+  // $('.destroyTask').on('click', onDeleteTask)
   // $('#getProjectContent').text(data)
 }
 
@@ -170,6 +173,35 @@ const onGetSingleProject = function (event) {
     .catch(getProjectFailure)
 }
 
+const onDeleteProject = (event) => {
+  event.preventDefault()
+  console.log('onDeleteProject firing')
+  const removeProject = $(event.target).attr('data-id')
+  // store.projectList = store.projectList.filter((project) => {
+  //   return String(project.id) !== String(removeProject)
+  // })
+  // refreshProject()
+  api.deleteProject(removeProject)
+    .then(deleteProjectSuccess)
+    .catch(deleteProjectFailure)
+    // .then(() => {
+    //   api.getAllProjects()
+    //     .then(getAllProjectsSuccess)
+    //     .catch(getAllProjectsFailure)
+    // })
+      // .catch(updateRecipeFailure)
+}
+
+// cont onDeleteTask
+
+const deleteProjectSuccess = (response) => {
+  console.log('deleteProjectSucces response is ', response)
+}
+
+const deleteProjectFailure = (error) => {
+  console.log(error)
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -188,5 +220,7 @@ module.exports = {
   getProjectSuccess,
   getProjectFailure,
   updateTaskSuccess,
-  updateTaskFailure
+  updateTaskFailure,
+  deleteProjectSuccess,
+  deleteProjectFailure
 }
