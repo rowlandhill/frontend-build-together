@@ -160,7 +160,7 @@ const refreshProject = (data) => {
   $('.getAllProjectsContent').append(showProjectHtml)
   $('.updateProject').on('submit', onUpdateProject)
   $('.destroyProject').on('click', onDeleteProject)
-  // $('.destroyTask').on('click', onDeleteTask)
+  $('.destroyTask').on('click', onDeleteTask)
 }
 
 >>>>>>> appendCreateTask
@@ -256,6 +256,9 @@ const getProjectSuccess = (data) => {
   console.log('get project success is ', data)
   console.log('getProjectSuccess tasks ', data.project.tasks)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> deleteTask
   console.log('getProjectSuccess iscomplete ', data.project.tasks.iscomplete)
   const showOneProjectHtml = showOneProjectTemplate({ project: store.singleProject })
   $('#getAllProjectsContent').empty()
@@ -264,6 +267,7 @@ const getProjectSuccess = (data) => {
   $('.updateProject').on('submit', onUpdateProject)
   $('.updateTasks').on('submit', onUpdateTask)
   $('.destroyProject').on('click', onDeleteProject)
+<<<<<<< HEAD
 <<<<<<< HEAD
   $('.destroyTask').on('click', onDeleteTask)
   $('#create-project-body').addClass('hidden')
@@ -281,6 +285,9 @@ const getProjectSuccess = (data) => {
 =======
   // $('.destroyTask').on('click', onDeleteTask)
 >>>>>>> deleteProject
+=======
+  $('.destroyTask').on('click', onDeleteTask)
+>>>>>>> deleteTask
   // $('#getProjectContent').text(data)
 }
 
@@ -352,15 +359,24 @@ const onDeleteProject = (event) => {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const onDeleteTask = (event) => {
   event.preventDefault()
   // refreshProject()
+=======
+const onDeleteTask = (event) => {
+  event.preventDefault()
+>>>>>>> deleteTask
   console.log('onDeleteTask firing')
   const removeTask = $(event.target).attr('data-id')
   // store.projectList = store.projectList.filter((project) => {
   //   return String(project.id) !== String(removeProject)
   // })
+<<<<<<< HEAD
   // refreshProjects()
+=======
+  // refreshProject()
+>>>>>>> deleteTask
   api.deleteTask(removeTask)
     .then(deleteTaskSuccess)
     .catch(deleteTaskFailure)
@@ -371,6 +387,7 @@ const onDeleteTask = (event) => {
     // })
       // .catch(updateRecipeFailure)
 }
+<<<<<<< HEAD
 
 const deleteProjectSuccess = (response) => {
   console.log('deleteProjectSuccess response is ', response)
@@ -383,6 +400,11 @@ const deleteProjectSuccess = (response) => {
 const deleteProjectSuccess = (response) => {
   console.log('deleteProjectSucces response is ', response)
 >>>>>>> deleteProject
+=======
+
+const deleteProjectSuccess = (response) => {
+  console.log('deleteProjectSuccess response is ', response)
+>>>>>>> deleteTask
 }
 
 const deleteProjectFailure = (error) => {
@@ -390,6 +412,9 @@ const deleteProjectFailure = (error) => {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> deleteTask
 const deleteTaskSuccess = (response) => {
   console.log('deleteTaskSuccess response is ', response)
 }
@@ -398,12 +423,15 @@ const deleteTaskFailure = (error) => {
   console.log(error)
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> appendCreateTask
 =======
 >>>>>>> updateTasks
 =======
 >>>>>>> deleteProject
+=======
+>>>>>>> deleteTask
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -443,6 +471,12 @@ module.exports = {
 =======
   updateTaskFailure,
   deleteProjectSuccess,
+<<<<<<< HEAD
   deleteProjectFailure
 >>>>>>> deleteProject
+=======
+  deleteProjectFailure,
+  deleteTaskSuccess,
+  deleteTaskFailure
+>>>>>>> deleteTask
 }
