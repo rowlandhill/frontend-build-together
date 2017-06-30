@@ -108,6 +108,16 @@ const appendCreateTask = (event) => {
   $("<div class='form-group'><input class='form-control' type='text' name='task[name]' placeholder='task name'></div><div class='form-group'><textarea class='form-control' name='task[description]' rows='3' placeholder='add description here'></textarea></div>").appendTo('#createTasks')
 }
 
+const showCreateProject = (event) => {
+  event.preventDefault()
+  $('#create-project-body').removeClass('hidden')
+  $('.getAllProjectsContent').empty()
+  $('.getProjectContent').empty()
+  $('#getNewProjectContent').empty()
+  $('#create-task-body').addClass('hidden')
+  document.getElementById('createProject').reset()
+}
+
 const addHandlers = () => {
   $('#register-form').on('submit', onSignUp)
   $('#login-form').on('submit', onSignIn)
@@ -119,6 +129,8 @@ const addHandlers = () => {
   $('#get-all-projects').on('click', onGetAllProjects)
   $('#get-all-tasks').on('click', onGetAllTasks)
   $('#getProject').on('submit', onGetProject)
+  $('#new-project-reveal-button').on('click', showCreateProject)
+  $('#go-to-new-project').on('submit', onGetProject)
 }
 
 module.exports = {

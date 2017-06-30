@@ -1,11 +1,15 @@
-<div data-id="{{project.id}}" class="col-md-12">
+<div style="background-color:white; border-radius:5px; padding:5px;" data-id="{{project.id}}" class="col-md-12">
     <ul style="list-style-type: none;">
       <li><h4>Project:<strong> {{project.title}}</strong></h4></li>
       <li class="desc"><p><strong>Project Description:</strong> {{project.body}}</p></li>
     </ul>
    </div>
-   <form class="updateProject" id="{{project.id}}" data-id="{{project.id}}">
-
+   <br>
+   <br>
+   <br>
+   <form id="updateProject" class="updateProject" id="{{project.id}}" data-id="{{project.id}}">
+     <br>
+     <br>
     <div class="container-fluid">
       <br>
        <input class="form-control handlebars-update" type="text" name="project[title]" id="handlebars-project-title" placeholder="update project name">
@@ -22,13 +26,13 @@
     </form>
 
    {{#each project.tasks as |task|}}
-   <div class="tasks col-md-12">
+   <div style="background-color:white; border-radius:5px; padding:5px;" class="tasks col-md-12">
      <ul>
        <li><h5><strong>Task: {{task.name}}</strong></h5></li>
        <li class="desc"><strong>Task Description:</strong> {{task.description}}</li>
        <li class="iscomplete"><strong>Finished? :</strong> {{task.iscomplete}}</li>
       </ul>
-      <form class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
+      <form id="updateTasks" class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
 
        <div class="container-fluid">
          <br>
