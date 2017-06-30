@@ -39,6 +39,53 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+const onCreateProject = function (event) {
+  console.log('createProject fired')
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.createProject(data)
+    .then(ui.createProjectSuccess)
+    // .then(api.createTask(data))
+    //   .then(ui.createTaskSuccess)
+    //   .catch(ui.createTaskFailure)
+      .catch(ui.createProjectFailure)
+}
+
+const onCreateTask = function (event) {
+  console.log('createTask fired')
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.createTask(data)
+    .then(ui.createTaskSuccess)
+    .catch(ui.createTaskFailure)
+}
+
+const onGetAllProjects = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.getAllProjects(data)
+    .then(ui.getAllProjectsSuccess)
+    .catch(ui.getAllProjectsFailure)
+}
+
+const onGetAllTasks = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.getAllTasks(data)
+    .then(ui.getAllTasksSuccess)
+    .catch(ui.getAllTasksFailure)
+}
+
+const onGetProject = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log('onGetProject data is ', data)
+  console.log('data.project.id is ', data.project.id)
+  api.getProject(data)
+    .then(ui.getProjectSuccess)
+    .catch(ui.getProjectFailure)
+}
+
 $(function () {
   $('#login-form-link').click(function (e) {
     $('#login-form').delay(100).fadeIn(100)
@@ -56,11 +103,34 @@ $(function () {
   })
 })
 
+const appendCreateTask = (event) => {
+  event.preventDefault()
+  $("<div class='form-group'><input class='form-control' type='text' name='task[name]' placeholder='task name'></div><div class='form-group'><textarea class='form-control' name='task[description]' rows='3' placeholder='add description here'></textarea></div>").appendTo('#createTasks')
+}
+
+const showCreateProject = (event) => {
+  event.preventDefault()
+  $('#create-project-body').removeClass('hidden')
+  $('.getAllProjectsContent').empty()
+  $('.getProjectContent').empty()
+  $('#getNewProjectContent').empty()
+  $('#create-task-body').addClass('hidden')
+  document.getElementById('createProject').reset()
+}
+
 const addHandlers = () => {
   $('#register-form').on('submit', onSignUp)
   $('#login-form').on('submit', onSignIn)
   $('#sign-out').on('click', onSignOut)
   $('#change-password-form').on('submit', onChangePassword)
+  $('#createProject').on('submit', onCreateProject)
+  $('#createTasks').on('submit', onCreateTask)
+  $('#add-task').on('click', appendCreateTask)
+  $('#get-all-projects').on('click', onGetAllProjects)
+  $('#get-all-tasks').on('click', onGetAllTasks)
+  $('#getProject').on('submit', onGetProject)
+  $('#new-project-reveal-button').on('click', showCreateProject)
+  $('#go-to-new-project').on('submit', onGetProject)
 }
 
 module.exports = {

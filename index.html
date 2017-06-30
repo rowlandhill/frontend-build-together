@@ -98,5 +98,57 @@
 
 <!-- CREATE NEW PROJECT CREATE NEW PROJECT CREATE NEW PROJECT CREATE NEW PROJECT CREATE NEW PROJECT CREATE NEW PROJECT  -->
 
+<div class="create-project-body">
+
+          <div class="container-fluid">
+
+            <form id="createProject" class="form-group">
+              <div class="form-group">
+                <input class="form-control" type="text" name="project[title]" placeholder="project name">
+              </div>
+            <div class="form-group">
+            <textarea class="form-control" name="project[body]" rows="7" placeholder="add description here"></textarea>
+            </div>
+            <!-- <div class="form-group">
+              <input class="form-control" type="text" name="task[name]" placeholder="task name">
+            </div>
+          <div class="form-group">
+          <textarea class="form-control" name="task[description]" rows="3" placeholder="add description here"></textarea>
+          </div>
+          <div class="form-group">
+              <input type="radio" value="true" name="task[iscomplete]"> Complete<br>
+              <input type="radio" value="false" name="task[iscomplete]"> Incomplete<br>
+            </div>
+          <button type="button" class="btn btn-default" id="add-task">add</button> -->
+            <button type="submit" class="btn btn-default" id="create-project">create</button>
+            </form>
+            </div>
+
+        </div>
+        <div id="createProjectContent"></div>
+        <br>
+        <div id="createTasksContent"></div>
+
+<!-- CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS -->
+<div class="create-task-body">
+
+          <div class="container-fluid">
+
+            <form id="createTasks" class="form-group">
+              <div class="form-group">
+                <input class="form-control" type="text" name="task[name]" placeholder="task name">
+              </div>
+            <div class="form-group">
+            <textarea class="form-control" name="task[description]" rows="3" placeholder="add description here"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="radio" name="gender" value="male"> Complete<br>
+                <input type="radio" name="gender" value="female"> Incomplete<br>
+              </div>
+            <button type="button" class="btn btn-default" id="add-task">add</button>
+            <button type="submit" class="btn btn-default" id="create-task">create</button>
+            </form>
+            </div>
+        </div>
     </body>
 </html>

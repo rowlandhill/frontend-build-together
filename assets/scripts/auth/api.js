@@ -40,9 +40,36 @@ const signOut = (data) => {
   })
 }
 
+const createProject = (data) => {
+  console.log('createProject data is', data)
+  return $.ajax({
+    url: config.apiOrigin + '/projects/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+const createTask = (data) => {
+  console.log('createTask data is', data)
+  return $.ajax({
+    url: config.apiOrigin + '/tasks/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+>>>>>>> createProject
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  createProject,
+  createTask
 }
