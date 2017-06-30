@@ -4,23 +4,12 @@
       <li class="desc"><p><strong>Project Description:</strong> {{project.body}}</p></li>
     </ul>
    </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> uiFixes
    <br>
    <br>
    <br>
    <form id="updateProject" class="updateProject" id="{{project.id}}" data-id="{{project.id}}">
      <br>
      <br>
-<<<<<<< HEAD
-=======
-   <form class="updateProject" id="{{project.id}}" data-id="{{project.id}}">
-
->>>>>>> updateTasks
-=======
->>>>>>> uiFixes
     <div class="container-fluid">
       <br>
        <input class="form-control handlebars-update" type="text" name="project[title]" id="handlebars-project-title" placeholder="update project name">
@@ -43,15 +32,7 @@
        <li class="desc"><strong>Task Description:</strong> {{task.description}}</li>
        <li class="iscomplete"><strong>Finished? :</strong> {{task.iscomplete}}</li>
       </ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <form id="updateTasks" class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
-=======
-      <form class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
->>>>>>> updateTasks
-=======
-      <form id="updateTasks" class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
->>>>>>> uiFixes
 
        <div class="container-fluid">
          <br>
@@ -65,25 +46,9 @@
          </div>
        <input data-id="{{task.id}}" type="submit" class="btn btn-default" value="update">
        <br>
-<<<<<<< HEAD
-<<<<<<< HEAD
        <div class="destroyTask">
          <br>
           <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">task completed</button>
-=======
-       <div class="destroy">
-         <br>
-          <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">delete</button>
->>>>>>> updateTasks
-=======
-       <div class="destroyTask">
-         <br>
-<<<<<<< HEAD
-          <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">delete task</button>
->>>>>>> deleteProject
-=======
-          <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">task completed</button>
->>>>>>> deleteTask
         </div>
        </form>
     </div>

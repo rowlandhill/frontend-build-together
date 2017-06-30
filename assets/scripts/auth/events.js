@@ -108,10 +108,6 @@ const appendCreateTask = (event) => {
   $("<div class='form-group'><input class='form-control' type='text' name='task[name]' placeholder='task name'></div><div class='form-group'><textarea class='form-control' name='task[description]' rows='3' placeholder='add description here'></textarea></div>").appendTo('#createTasks')
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> uiFixes
 const showCreateProject = (event) => {
   event.preventDefault()
   $('#create-project-body').removeClass('hidden')
@@ -122,11 +118,6 @@ const showCreateProject = (event) => {
   document.getElementById('createProject').reset()
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> appendCreateTask
-=======
->>>>>>> uiFixes
 const addHandlers = () => {
   $('#register-form').on('submit', onSignUp)
   $('#login-form').on('submit', onSignIn)
@@ -138,16 +129,8 @@ const addHandlers = () => {
   $('#get-all-projects').on('click', onGetAllProjects)
   $('#get-all-tasks').on('click', onGetAllTasks)
   $('#getProject').on('submit', onGetProject)
-<<<<<<< HEAD
-<<<<<<< HEAD
   $('#new-project-reveal-button').on('click', showCreateProject)
   $('#go-to-new-project').on('submit', onGetProject)
-=======
->>>>>>> appendCreateTask
-=======
-  $('#new-project-reveal-button').on('click', showCreateProject)
-  $('#go-to-new-project').on('submit', onGetProject)
->>>>>>> uiFixes
 }
 
 module.exports = {
