@@ -2,8 +2,23 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 body {
-    padding-top: 90px;
+  padding-top: 90px;
+  background-image: url(../img/yellow-hat.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
+.hidden {
+  visibility: hidden;
+}
+
+#create-new-project-header {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .panel-login {
     border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
@@ -66,6 +81,20 @@ body {
 	padding: 14px 0;
 	text-transform: uppercase;
 	border-color: #59B2E6;
+}
+
+.btn-nav-bar {
+	background-color: #888;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #888;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .btn-login:hover,
 .btn-login:focus {

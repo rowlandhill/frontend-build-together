@@ -5,10 +5,15 @@ const api = require('./api.js')
 const showProjectsTemplate = require('../templates/get-all-projects.handlebars')
 const showOneProjectTemplate = require('../templates/get-one-project.handlebars')
 <<<<<<< HEAD
+<<<<<<< HEAD
 const showNewProjectTemplate = require('../templates/new-project.handlebars')
 
 =======
 >>>>>>> appendCreateTask
+=======
+const showNewProjectTemplate = require('../templates/new-project.handlebars')
+
+>>>>>>> uiFixes
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
@@ -82,6 +87,7 @@ const onUpdateProject = (event) => {
 <<<<<<< HEAD
   $('.updateProject').trigger('reset')
   refreshProjects()
+<<<<<<< HEAD
   api.updateProject(data, newProject)
     .then(updateProjectSuccess)
     .catch(updateProjectFailure)
@@ -124,15 +130,11 @@ const refreshProjects = (data) => {
   $('.updateProject').trigger('reset')
 >>>>>>> updateTasks
   refreshProject()
+=======
+>>>>>>> uiFixes
   api.updateProject(data, newProject)
     .then(updateProjectSuccess)
     .catch(updateProjectFailure)
-    // .then(() => {
-    //   api.getProject()
-    //     .then(getProjectSuccess)
-    //     .catch(getProjectFailure)
-    //     .catch(updateProjectFailure)
-    // })
 }
 
 const onUpdateTask = (event) => {
@@ -142,19 +144,13 @@ const onUpdateTask = (event) => {
   console.log('event.target is ' + data)
   console.log('newProject is ', newTask)
   $('.updateProject').trigger('reset')
-  refreshProject()
+  refreshProjects()
   api.updateTask(data, newTask)
     .then(updateProjectSuccess)
     .catch(updateTaskFailure)
-    // .then(() => {
-    //   api.getProject()
-    //     .then(getProjectSuccess)
-    //     .catch(getProjectFailure)
-    //     .catch(updateProjectFailure)
-    // })
 }
 
-const refreshProject = (data) => {
+const refreshProjects = (data) => {
   const showProjectHtml = showProjectsTemplate({ projects: store.projectList })
   $('.getAllProjectsContent').empty()
   $('.getAllProjectsContent').append(showProjectHtml)
@@ -163,6 +159,7 @@ const refreshProject = (data) => {
   $('.destroyTask').on('click', onDeleteTask)
 }
 
+<<<<<<< HEAD
 >>>>>>> appendCreateTask
 const createProjectSuccess = (data) => {
   console.log('createProjectSuccess is ', data)
@@ -180,6 +177,28 @@ const createProjectSuccess = (data) => {
   $('#createProjectContent').text(data.project.title + ', ' + data.project.body)
   $('#project-id').val(data.project.id)
 >>>>>>> createTask
+=======
+// const refreshProject = (data) => {
+//   const showOneProjectHtml = showOneProjectTemplate({ project: store.singleProject })
+//   $('.getAllProjectsContent').empty()
+//   $('.getAllProjectsContent').append(showOneProjectHtml)
+//   $('.updateProject').on('submit', onUpdateProject)
+//   $('.destroyProject').on('click', onDeleteProject)
+//   $('.destroyTask').on('click', onDeleteTask)
+// }
+
+const createProjectSuccess = (data) => {
+  console.log('createProjectSuccess is ', data)
+  store.singleProject = data.project
+  // $('#createProjectContent').text(data.project.title + ', ' + data.project.body)
+  clearForms()
+  $('#project-id').val(data.project.id)
+  $('#go-to-project').val(data.project.id)
+  $('#create-project-body').addClass('hidden')
+  const showNewProjectHtml = showNewProjectTemplate({ project: store.singleProject })
+  $('#getNewProjectContent').html(showNewProjectHtml)
+  $('.create-task-body').removeClass('hidden')
+>>>>>>> uiFixes
   console.log('project_id is ', data.project.id)
   console.log('user_id is ', data.project.user.id)
 }
@@ -191,23 +210,32 @@ const createProjectFailure = (error) => {
 const getAllProjectsSuccess = (data) => {
   store.projectList = data.projects
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> uiFixes
   clearForms()
   $('#getProjectContent').empty()
   $('#create-project-body').addClass('hidden')
   $('#create-task-body').addClass('hidden')
   $('#getNewProjectContent').empty()
+<<<<<<< HEAD
   console.log('get all projects success is ', data)
   console.log('store.projectlist data is ', store.projectList)
   refreshProjects(data)
   $('.seeMore').on('submit', onGetSingleProject)
 =======
+=======
+>>>>>>> uiFixes
   console.log('get all projects success is ', data)
-  $('#getAllProjectsContent').text(data)
   console.log('store.projectlist data is ', store.projectList)
+<<<<<<< HEAD
   refreshProject(data)
 <<<<<<< HEAD
 >>>>>>> appendCreateTask
 =======
+=======
+  refreshProjects(data)
+>>>>>>> uiFixes
   $('.seeMore').on('submit', onGetSingleProject)
 >>>>>>> updateTasks
 }
@@ -227,9 +255,15 @@ const createTaskSuccess = (data) => {
 =======
 =======
   console.log(data.task.name)
+<<<<<<< HEAD
 >>>>>>> appendCreateTask
   $('#createTaskContent').text(data.task.name + ', ' + data.task.description)
 >>>>>>> createTask
+=======
+  $('#task-name').val('')
+  $('#task-description').val('')
+  // $('#createTaskContent').text(data.task.name + ', ' + data.task.description)
+>>>>>>> uiFixes
 }
 
 const createTaskFailure = (error) => {
@@ -239,12 +273,17 @@ const createTaskFailure = (error) => {
 const getAllTasksSuccess = (data) => {
   console.log('get all tasks success is ', data)
 <<<<<<< HEAD
+<<<<<<< HEAD
   // $('#getAllTasksContent').text(data)
   // console.log(data.tasks[0].project.id)
 =======
   $('#getAllTasksContent').text(data)
   console.log(data.tasks[0].project.id)
 >>>>>>> appendCreateTask
+=======
+  // $('#getAllTasksContent').text(data)
+  // console.log(data.tasks[0].project.id)
+>>>>>>> uiFixes
 }
 
 const getAllTasksFailure = (error) => {
@@ -287,7 +326,12 @@ const getProjectSuccess = (data) => {
 >>>>>>> deleteProject
 =======
   $('.destroyTask').on('click', onDeleteTask)
+<<<<<<< HEAD
 >>>>>>> deleteTask
+=======
+  $('#create-project-body').addClass('hidden')
+  $('#create-task-body').addClass('hidden')
+>>>>>>> uiFixes
   // $('#getProjectContent').text(data)
 }
 
@@ -343,10 +387,14 @@ const onDeleteProject = (event) => {
   //   return String(project.id) !== String(removeProject)
   // })
 <<<<<<< HEAD
+<<<<<<< HEAD
   // refreshProjects()
 =======
   // refreshProject()
 >>>>>>> deleteProject
+=======
+  // refreshProjects()
+>>>>>>> uiFixes
   api.deleteProject(removeProject)
     .then(deleteProjectSuccess)
     .catch(deleteProjectFailure)
@@ -363,20 +411,27 @@ const onDeleteProject = (event) => {
 const onDeleteTask = (event) => {
   event.preventDefault()
   // refreshProject()
+<<<<<<< HEAD
 =======
 const onDeleteTask = (event) => {
   event.preventDefault()
 >>>>>>> deleteTask
+=======
+>>>>>>> uiFixes
   console.log('onDeleteTask firing')
   const removeTask = $(event.target).attr('data-id')
   // store.projectList = store.projectList.filter((project) => {
   //   return String(project.id) !== String(removeProject)
   // })
 <<<<<<< HEAD
+<<<<<<< HEAD
   // refreshProjects()
 =======
   // refreshProject()
 >>>>>>> deleteTask
+=======
+  // refreshProjects()
+>>>>>>> uiFixes
   api.deleteTask(removeTask)
     .then(deleteTaskSuccess)
     .catch(deleteTaskFailure)
@@ -404,7 +459,13 @@ const deleteProjectSuccess = (response) => {
 
 const deleteProjectSuccess = (response) => {
   console.log('deleteProjectSuccess response is ', response)
+<<<<<<< HEAD
 >>>>>>> deleteTask
+=======
+  api.getAllProjects()
+      .then(getAllProjectsSuccess)
+      .catch(getAllProjectsFailure)
+>>>>>>> uiFixes
 }
 
 const deleteProjectFailure = (error) => {

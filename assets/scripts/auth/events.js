@@ -109,6 +109,9 @@ const appendCreateTask = (event) => {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> uiFixes
 const showCreateProject = (event) => {
   event.preventDefault()
   $('#create-project-body').removeClass('hidden')
@@ -119,8 +122,11 @@ const showCreateProject = (event) => {
   document.getElementById('createProject').reset()
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> appendCreateTask
+=======
+>>>>>>> uiFixes
 const addHandlers = () => {
   $('#register-form').on('submit', onSignUp)
   $('#login-form').on('submit', onSignIn)
@@ -133,10 +139,15 @@ const addHandlers = () => {
   $('#get-all-tasks').on('click', onGetAllTasks)
   $('#getProject').on('submit', onGetProject)
 <<<<<<< HEAD
+<<<<<<< HEAD
   $('#new-project-reveal-button').on('click', showCreateProject)
   $('#go-to-new-project').on('submit', onGetProject)
 =======
 >>>>>>> appendCreateTask
+=======
+  $('#new-project-reveal-button').on('click', showCreateProject)
+  $('#go-to-new-project').on('submit', onGetProject)
+>>>>>>> uiFixes
 }
 
 module.exports = {
