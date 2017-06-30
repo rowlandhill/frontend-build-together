@@ -115,6 +115,7 @@ const refreshProjects = (data) => {
 
 const createProjectSuccess = (data) => {
   console.log('createProjectSuccess is ', data)
+<<<<<<< HEAD
   store.singleProject = data.project
   // $('#createProjectContent').text(data.project.title + ', ' + data.project.body)
   clearForms()
@@ -124,6 +125,10 @@ const createProjectSuccess = (data) => {
   const showNewProjectHtml = showNewProjectTemplate({ project: store.singleProject })
   $('#getNewProjectContent').html(showNewProjectHtml)
   $('.create-task-body').removeClass('hidden')
+=======
+  $('#createProjectContent').text(data.project.title + ', ' + data.project.body)
+  $('#project-id').val(data.project.id)
+>>>>>>> createTask
   console.log('project_id is ', data.project.id)
   console.log('user_id is ', data.project.user.id)
 }
@@ -151,10 +156,14 @@ const getAllProjectsFailure = (error) => {
 
 const createTaskSuccess = (data) => {
   console.log('createTaskSuccess is ', data)
+<<<<<<< HEAD
   console.log(data.task.name)
   $('#task-name').val('')
   $('#task-description').val('')
   // $('#createTaskContent').text(data.task.name + ', ' + data.task.description)
+=======
+  $('#createTaskContent').text(data.task.name + ', ' + data.task.description)
+>>>>>>> createTask
 }
 
 const createTaskFailure = (error) => {

@@ -136,14 +136,17 @@
 
             <form id="createTasks" class="form-group">
               <div class="form-group">
+                <input class="form-control" type="text" id="project-id" name="task[project_id]" placeholder="project id">
+              </div>
+              <div class="form-group">
                 <input class="form-control" type="text" name="task[name]" placeholder="task name">
               </div>
             <div class="form-group">
             <textarea class="form-control" name="task[description]" rows="3" placeholder="add description here"></textarea>
             </div>
             <div class="form-group">
-                <input type="radio" name="gender" value="male"> Complete<br>
-                <input type="radio" name="gender" value="female"> Incomplete<br>
+                <input type="radio" name="task[iscomplete]" value="true"> Complete<br>
+                <input type="radio" name="task[iscomplete]" value="false"> Incomplete<br>
               </div>
             <button type="button" class="btn btn-default" id="add-task">add</button>
             <button type="submit" class="btn btn-default" id="create-task">create</button>
