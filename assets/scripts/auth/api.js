@@ -111,6 +111,19 @@ const updateProject = (data, newProject) => {
   })
 }
 
+const updateTask = (data, newTask) => {
+  // console.log(data + 'PATCH TEST DATA')
+  event.preventDefault()
+  return $.ajax({
+    url: config.apiOrigin + '/tasks/' + newTask,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -121,5 +134,6 @@ module.exports = {
   getAllTasks,
   getAllProjects,
   getProject,
-  updateProject
+  updateProject,
+  updateTask
 }

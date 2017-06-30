@@ -4,12 +4,17 @@
       <li class="desc"><p><strong>Project Description:</strong> {{project.body}}</p></li>
     </ul>
    </div>
+<<<<<<< HEAD
    <br>
    <br>
    <br>
    <form id="updateProject" class="updateProject" id="{{project.id}}" data-id="{{project.id}}">
      <br>
      <br>
+=======
+   <form class="updateProject" id="{{project.id}}" data-id="{{project.id}}">
+
+>>>>>>> updateTasks
     <div class="container-fluid">
       <br>
        <input class="form-control handlebars-update" type="text" name="project[title]" id="handlebars-project-title" placeholder="update project name">
@@ -32,7 +37,11 @@
        <li class="desc"><strong>Task Description:</strong> {{task.description}}</li>
        <li class="iscomplete"><strong>Finished? :</strong> {{task.iscomplete}}</li>
       </ul>
+<<<<<<< HEAD
       <form id="updateTasks" class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
+=======
+      <form class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
+>>>>>>> updateTasks
 
        <div class="container-fluid">
          <br>
@@ -46,9 +55,15 @@
          </div>
        <input data-id="{{task.id}}" type="submit" class="btn btn-default" value="update">
        <br>
+<<<<<<< HEAD
        <div class="destroyTask">
          <br>
           <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">task completed</button>
+=======
+       <div class="destroy">
+         <br>
+          <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">delete</button>
+>>>>>>> updateTasks
         </div>
        </form>
     </div>

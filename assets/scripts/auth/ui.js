@@ -79,6 +79,7 @@ const onUpdateProject = (event) => {
   console.log('event.target is ' + data)
   console.log('newProject is ', newProject)
 <<<<<<< HEAD
+<<<<<<< HEAD
   $('.updateProject').trigger('reset')
   refreshProjects()
   api.updateProject(data, newProject)
@@ -119,6 +120,9 @@ const refreshProjects = (data) => {
 
 =======
   $('.update').trigger('reset')
+=======
+  $('.updateProject').trigger('reset')
+>>>>>>> updateTasks
   refreshProject()
   api.updateProject(data, newProject)
     .then(updateProjectSuccess)
@@ -131,11 +135,30 @@ const refreshProjects = (data) => {
     // })
 }
 
+const onUpdateTask = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const newTask = $(event.target).attr('data-id')
+  console.log('event.target is ' + data)
+  console.log('newProject is ', newTask)
+  $('.updateProject').trigger('reset')
+  refreshProject()
+  api.updateTask(data, newTask)
+    .then(updateProjectSuccess)
+    .catch(updateTaskFailure)
+    // .then(() => {
+    //   api.getProject()
+    //     .then(getProjectSuccess)
+    //     .catch(getProjectFailure)
+    //     .catch(updateProjectFailure)
+    // })
+}
+
 const refreshProject = (data) => {
   const showProjectHtml = showProjectsTemplate({ projects: store.projectList })
-  $('#getAllProjectsContent').empty()
-  $('#getAllProjectsContent').append(showProjectHtml)
-  $('.update').on('submit', onUpdateProject)
+  $('.getAllProjectsContent').empty()
+  $('.getAllProjectsContent').append(showProjectHtml)
+  $('.updateProject').on('submit', onUpdateProject)
   // $('.destroy').on('click', onDeleteProject)
 }
 
@@ -181,7 +204,11 @@ const getAllProjectsSuccess = (data) => {
   $('#getAllProjectsContent').text(data)
   console.log('store.projectlist data is ', store.projectList)
   refreshProject(data)
+<<<<<<< HEAD
 >>>>>>> appendCreateTask
+=======
+  $('.seeMore').on('submit', onGetSingleProject)
+>>>>>>> updateTasks
 }
 
 const getAllProjectsFailure = (error) => {
@@ -242,8 +269,13 @@ const getProjectSuccess = (data) => {
 =======
   const showOneProjectHtml = showOneProjectTemplate({ project: store.singleProject })
   $('#getProjectContent').html(showOneProjectHtml)
+<<<<<<< HEAD
   $('.update').on('submit', onUpdateProject)
 >>>>>>> appendCreateTask
+=======
+  $('.updateProject').on('submit', onUpdateProject)
+  $('.updateTasks').on('submit', onUpdateTask)
+>>>>>>> updateTasks
   // $('#getProjectContent').text(data)
 }
 
@@ -263,6 +295,9 @@ const updateProjectFailure = (error) => {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> updateTasks
 const updateTaskSuccess = (response) => {
   console.log('success is ', response)
   api.getProject(response)
@@ -284,6 +319,7 @@ const onGetSingleProject = function (event) {
     .catch(getProjectFailure)
 }
 
+<<<<<<< HEAD
 const onDeleteProject = (event) => {
   event.preventDefault()
   console.log('onDeleteProject firing')
@@ -344,6 +380,8 @@ const deleteTaskFailure = (error) => {
 
 =======
 >>>>>>> appendCreateTask
+=======
+>>>>>>> updateTasks
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -363,6 +401,7 @@ module.exports = {
   getAllTasksFailure,
   getProjectSuccess,
 <<<<<<< HEAD
+<<<<<<< HEAD
   getProjectFailure,
   updateTaskSuccess,
   updateTaskFailure,
@@ -373,4 +412,9 @@ module.exports = {
 =======
   getProjectFailure
 >>>>>>> appendCreateTask
+=======
+  getProjectFailure,
+  updateTaskSuccess,
+  updateTaskFailure
+>>>>>>> updateTasks
 }
