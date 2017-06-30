@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>build + together</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags unless you know what you are doing -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+
+<!-- NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR NAV BAR  -->
+
+      <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">build + together [app currently under construction]</a>
+
+<!-- SIGN OUT BUTTON SIGN OUT BUTTON SIGN OUT BUTTON SIGN OUT BUTTON SIGN OUT BUTTON SIGN OUT BUTTON SIGN OUT BUTTON -->
+<div id="sign-out-button" class="form-inline navbar-right hidden">
+  <input type="button" name="sign-out" id="sign-out" tabindex="4" class="form-control btn btn-nav-bar" value="Sign Out">
+</div>
+
+<!-- CHANGE PASSWORD MODAL CHANGE PASSWORD MODAL CHANGE PASSWORD MODAL CHANGE PASSWORD MODAL CHANGE PASSWORD MODAL  -->
+<button type="button" class="btn navbar-right btn-nav-bar hidden" data-toggle="modal" id="change-password-modal-button" data-target="#change-password-modal">change pw</button>
+
+<!-- CHANGE PASSWORD MODAL -->
+<div id="change-password-modal" data-backdrop="false" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" id="change-password-close-X" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="change-password-modal-alert">Change Password</h4>
+        </div>
+        <div class="modal-body">
+          <form id="change-password-form" class="" role="form" style="display: block;">
+            <br>
+            <div class="form-group">
+              <input type="password" name="passwords[old]" id="old-password" tabindex="2" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <input type="password" name="passwords[new]" id="new-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <input type="submit" name="login-submit" id="change-password-submit" tabindex="4" class="form-control btn btn-login" value="Change Password">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="sign-in-close-button" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CREATE NEW PROJECT FORM REVEAL CREATE NEW PROJECT FORM REVEAL CREATE NEW PROJECT FORM REVEAL  -->
+
+<button type="button" class="btn navbar-right btn-nav-bar form-inline hidden" id="new-project-reveal-button">New Project</button>
+
+<!-- SHOW ALL PROJECTS SHOW ALL PROJECTS SHOW ALL PROJECTS SHOW ALL PROJECTS SHOW ALL PROJECTS SHOW ALL PROJECTS  -->
+
+<button type="button" class="btn navbar-right btn-nav-bar hidden form-inline" id="get-all-projects">get all projects</button>
+<br>
+
+</nav>
+<br>
+<br>
+<!-- NAV BAR END NAV BAR END NAV BAR END NAV BAR END NAV BAR END NAV BAR END NAV BAR END NAV BAR END  -->
+
+
+<!-- CREATE NEW PROJECT CREATE NEW PROJECT CREATE NEW PROJECT CREATE NEW PROJECT CREATE NEW PROJECT CREATE NEW PROJECT  -->
+
+
+<div id="create-project-body" class="create-project-body hidden">
+
+          <div class="container-fluid">
+            <h4 id="create-new-project-header">Create your new project.  Once you're done, you'll be able to add Tasks</h4>
+            <form id="createProject" class="form-group">
+              <div class="form-group">
+                <input class="form-control" type="text" name="project[title]" placeholder="project name">
+              </div>
+            <div class="form-group">
+            <textarea class="form-control" name="project[body]" rows="7" placeholder="add description here"></textarea>
+            </div>
+            <!-- <div class="form-group">
+              <input class="form-control" type="text" name="task[name]" placeholder="task name">
+            </div>
+          <div class="form-group">
+          <textarea class="form-control" name="task[description]" rows="3" placeholder="add description here"></textarea>
+          </div>
+          <div class="form-group">
+              <input type="radio" value="true" name="task[iscomplete]"> Complete<br>
+              <input type="radio" value="false" name="task[iscomplete]"> Incomplete<br>
+            </div>
+          <button type="button" class="btn btn-default" id="add-task">add</button> -->
+            <button type="submit" class="btn btn-default" id="create-project">create</button>
+            </form>
+            </div>
+
+        </div>
+
+<!-- CREATE PROJECT CONTENT CREATE PROJECT CONTENT CREATE PROJECT CONTENT CREATE PROJECT CONTENT  -->
+
+        <!-- <div class="createProjectContent" id="createProjectContent"></div>
+        <br> -->
+
+<!-- CREATE TASK CONTENT CREATE TASK CONTENT CREATE TASK CONTENT CREATE TASK CONTENT CREATE TASK CONTENT  -->
+
+        <!-- <div class="createTaskContent" id="createTaskContent"></div>
+        <br> -->
+
+<!-- GET ALL PROJECTS CONTENT GET ALL PROJECTS CONTENT GET ALL PROJECTS CONTENT GET ALL PROJECTS CONTENT   -->
+
+        <div class="getAllProjectsContent" id="getAllProjectsContent"></div>
+
+<!-- GET NEW PROJECT CONTENT GET NEW PROJECT CONTENT GET NEW PROJECT CONTENT GET NEW PROJECT CONTENT  -->
+
+      <div class="getNewProjectContent" id="getNewProjectContent"></div>
+
+<!-- GET ALL TASKS BUTTON GET ALL TASKS BUTTON GET ALL TASKS BUTTON GET ALL TASKS BUTTON GET ALL TASKS BUTTON  -->
+
+        <!-- <div id="getAllTasksContent"></div>
+        <button type="button" class="btn btn-default" id="get-all-tasks">get all tasks</button> -->
+        <br>
+
+<!-- GET ONE PROJECT CONTENT GET ONE PROJECT CONTENT GET ONE PROJECT CONTENT GET ONE PROJECT CONTENT  -->
+
+        <div class="getProjectContent" id="getProjectContent"></div>
+
+<!-- GET ONE PROJECT BUTTON GET ONE PROJECT BUTTON GET ONE PROJECT BUTTON GET ONE PROJECT BUTTON  -->
+
+        <form id="getProject" class="form-group hidden">
+          <div class="form-group">
+            <input class="form-control" type="text" name="project[id]" placeholder="get one project id">
+          </div>
+        <button type="submit" class="btn btn-default" id="get-project">get one project</button>
+      </form>
+
+<!-- CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS CREATE NEW TASKS -->
+<div id="create-task-body" class="create-task-body hidden">
+
+          <div class="container-fluid">
+
+            <form id="createTasks" class="form-group">
+              <div class="form-group">
+                <input class="form-control hidden" type="text" id="project-id" name="task[project_id]" placeholder="project id">
+              </div>
+              <!-- <button type="submit" class="btn btn-default" id="create-task">add task</button> -->
+              <div class="form-group">
+                <input class="form-control" id="task-name" type="text" name="task[name]" placeholder="task name">
+              </div>
+            <div class="form-group">
+            <textarea class="form-control" id="task-description" name="task[description]" rows="3" placeholder="add description here"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default" id="create-task">add task</button>
+            </form>
+            <form id="go-to-new-project" class="form-group">
+              <div class="form-group">
+                <input class="form-control hidden" id="go-to-project" type="text" name="project[id]">
+              </div>
+            <button type="submit" class="btn btn-default" id="get-new-project">go to your project</button>
+          </form>
+            </div>
+        </div>
+
+        <!-- REGISTER AND SIGN IN REGISTER AND SIGN IN REGISTER AND SIGN IN REGISTER AND SIGN IN REGISTER AND SIGN IN REGISTER AND SIGN IN  -->
+              <div id="registration" class="container">
+                <div class="row">
+        			<div class="col-md-6 col-md-offset-3">
+        				<div class="panel panel-login">
+        					<div class="panel-heading">
+        						<div class="row">
+        							<div class="col-xs-6">
+        								<a href="#" class="active" id="login-form-link">Sign In</a>
+        							</div>
+        							<div class="col-xs-6">
+        								<a href="#" id="register-form-link">Sign Up</a>
+        							</div>
+        						</div>
+        						<hr>
+        					</div>
+        					<div class="panel-body">
+        						<div class="row">
+        							<div class="col-lg-12">
+        								<form id="login-form" role="form" style="display: block;">
+        									<div class="form-group">
+        										<input type="text" name="credentials[email]" id="username" tabindex="1" class="form-control" placeholder="Email" value="">
+        									</div>
+        									<div class="form-group">
+        										<input type="password" name="credentials[password]" id="password" tabindex="2" class="form-control" placeholder="Password">
+        									</div>
+        									<div class="form-group">
+        										<div class="row">
+        											<div class="col-sm-6 col-sm-offset-3">
+        												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Sign In!">
+        											</div>
+        										</div>
+        									</div>
+        								</form>
+        								<form id="register-form" role="form" style="display: none;">
+        									<div class="form-group">
+        										<input type="email" name="credentials[email]" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+        									</div>
+        									<div class="form-group">
+        										<input type="password" name="credentials[password]" id="password" tabindex="2" class="form-control" placeholder="Password">
+        									</div>
+        									<div class="form-group">
+        										<input type="password" name="credentials[password_confirmation]" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+        									</div>
+        									<div class="form-group">
+        										<div class="row">
+        											<div class="col-sm-6 col-sm-offset-3">
+        												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Sign Up!">
+        											</div>
+        										</div>
+        									</div>
+        								</form>
+        							</div>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+
+    </body>
+</html>
