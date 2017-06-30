@@ -4,8 +4,11 @@ const store = require('../store.js')
 const api = require('./api.js')
 const showProjectsTemplate = require('../templates/get-all-projects.handlebars')
 const showOneProjectTemplate = require('../templates/get-one-project.handlebars')
+<<<<<<< HEAD
 const showNewProjectTemplate = require('../templates/new-project.handlebars')
 
+=======
+>>>>>>> appendCreateTask
 const getFormFields = require(`../../../lib/get-form-fields`)
 
 const signUpSuccess = (data) => {
@@ -75,6 +78,7 @@ const onUpdateProject = (event) => {
   const newProject = $(event.target).attr('data-id')
   console.log('event.target is ' + data)
   console.log('newProject is ', newProject)
+<<<<<<< HEAD
   $('.updateProject').trigger('reset')
   refreshProjects()
   api.updateProject(data, newProject)
@@ -113,6 +117,29 @@ const refreshProjects = (data) => {
 //   $('.destroyTask').on('click', onDeleteTask)
 // }
 
+=======
+  $('.update').trigger('reset')
+  refreshProject()
+  api.updateProject(data, newProject)
+    .then(updateProjectSuccess)
+    .catch(updateProjectFailure)
+    // .then(() => {
+    //   api.getProject()
+    //     .then(getProjectSuccess)
+    //     .catch(getProjectFailure)
+    //     .catch(updateProjectFailure)
+    // })
+}
+
+const refreshProject = (data) => {
+  const showProjectHtml = showProjectsTemplate({ projects: store.projectList })
+  $('#getAllProjectsContent').empty()
+  $('#getAllProjectsContent').append(showProjectHtml)
+  $('.update').on('submit', onUpdateProject)
+  // $('.destroy').on('click', onDeleteProject)
+}
+
+>>>>>>> appendCreateTask
 const createProjectSuccess = (data) => {
   console.log('createProjectSuccess is ', data)
 <<<<<<< HEAD
@@ -139,6 +166,7 @@ const createProjectFailure = (error) => {
 
 const getAllProjectsSuccess = (data) => {
   store.projectList = data.projects
+<<<<<<< HEAD
   clearForms()
   $('#getProjectContent').empty()
   $('#create-project-body').addClass('hidden')
@@ -148,6 +176,12 @@ const getAllProjectsSuccess = (data) => {
   console.log('store.projectlist data is ', store.projectList)
   refreshProjects(data)
   $('.seeMore').on('submit', onGetSingleProject)
+=======
+  console.log('get all projects success is ', data)
+  $('#getAllProjectsContent').text(data)
+  console.log('store.projectlist data is ', store.projectList)
+  refreshProject(data)
+>>>>>>> appendCreateTask
 }
 
 const getAllProjectsFailure = (error) => {
@@ -157,11 +191,15 @@ const getAllProjectsFailure = (error) => {
 const createTaskSuccess = (data) => {
   console.log('createTaskSuccess is ', data)
 <<<<<<< HEAD
+<<<<<<< HEAD
   console.log(data.task.name)
   $('#task-name').val('')
   $('#task-description').val('')
   // $('#createTaskContent').text(data.task.name + ', ' + data.task.description)
 =======
+=======
+  console.log(data.task.name)
+>>>>>>> appendCreateTask
   $('#createTaskContent').text(data.task.name + ', ' + data.task.description)
 >>>>>>> createTask
 }
@@ -172,8 +210,13 @@ const createTaskFailure = (error) => {
 
 const getAllTasksSuccess = (data) => {
   console.log('get all tasks success is ', data)
+<<<<<<< HEAD
   // $('#getAllTasksContent').text(data)
   // console.log(data.tasks[0].project.id)
+=======
+  $('#getAllTasksContent').text(data)
+  console.log(data.tasks[0].project.id)
+>>>>>>> appendCreateTask
 }
 
 const getAllTasksFailure = (error) => {
@@ -184,6 +227,7 @@ const getProjectSuccess = (data) => {
   store.singleProject = data.project
   console.log('get project success is ', data)
   console.log('getProjectSuccess tasks ', data.project.tasks)
+<<<<<<< HEAD
   console.log('getProjectSuccess iscomplete ', data.project.tasks.iscomplete)
   const showOneProjectHtml = showOneProjectTemplate({ project: store.singleProject })
   $('#getAllProjectsContent').empty()
@@ -195,6 +239,11 @@ const getProjectSuccess = (data) => {
   $('.destroyTask').on('click', onDeleteTask)
   $('#create-project-body').addClass('hidden')
   $('#create-task-body').addClass('hidden')
+=======
+  const showOneProjectHtml = showOneProjectTemplate({ project: store.singleProject })
+  $('#getProjectContent').html(showOneProjectHtml)
+  $('.update').on('submit', onUpdateProject)
+>>>>>>> appendCreateTask
   // $('#getProjectContent').text(data)
 }
 
@@ -213,6 +262,7 @@ const updateProjectFailure = (error) => {
   console.log(error)
 }
 
+<<<<<<< HEAD
 const updateTaskSuccess = (response) => {
   console.log('success is ', response)
   api.getProject(response)
@@ -292,6 +342,8 @@ const deleteTaskFailure = (error) => {
   console.log(error)
 }
 
+=======
+>>>>>>> appendCreateTask
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -310,6 +362,7 @@ module.exports = {
   getAllTasksSuccess,
   getAllTasksFailure,
   getProjectSuccess,
+<<<<<<< HEAD
   getProjectFailure,
   updateTaskSuccess,
   updateTaskFailure,
@@ -317,4 +370,7 @@ module.exports = {
   deleteProjectFailure,
   deleteTaskSuccess,
   deleteTaskFailure
+=======
+  getProjectFailure
+>>>>>>> appendCreateTask
 }

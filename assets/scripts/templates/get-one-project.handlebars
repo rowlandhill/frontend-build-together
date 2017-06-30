@@ -1,0 +1,55 @@
+<div style="background-color:white; border-radius:5px; padding:5px;" data-id="{{project.id}}" class="col-md-12">
+    <ul style="list-style-type: none;">
+      <li><h4>Project:<strong> {{project.title}}</strong></h4></li>
+      <li class="desc"><p><strong>Project Description:</strong> {{project.body}}</p></li>
+    </ul>
+   </div>
+   <br>
+   <br>
+   <br>
+   <form id="updateProject" class="updateProject" id="{{project.id}}" data-id="{{project.id}}">
+     <br>
+     <br>
+    <div class="container-fluid">
+      <br>
+       <input class="form-control handlebars-update" type="text" name="project[title]" id="handlebars-project-title" placeholder="update project name">
+       <br>
+       <div class="form-group">
+     <textarea class="form-control handlebars-update" name="project[body]" id="handlebars-project-body" rows="7" placeholder="update description here"></textarea>
+    </div>
+    <input data-id="{{project.id}}" type="submit" class="btn btn-default" value="update">
+    <br>
+    <div class="destroyProject">
+      <br>
+       <button data-id="{{project.id}}" id="red-button" class="btn btn-danger" value="delete">delete project</button>
+     </div>
+    </form>
+
+   {{#each project.tasks as |task|}}
+   <div style="background-color:white; border-radius:5px; padding:5px;" class="tasks col-md-12">
+     <ul>
+       <li><h5><strong>Task: {{task.name}}</strong></h5></li>
+       <li class="desc"><strong>Task Description:</strong> {{task.description}}</li>
+       <li class="iscomplete"><strong>Finished? :</strong> {{task.iscomplete}}</li>
+      </ul>
+      <form id="updateTasks" class="updateTasks" id="{{task.id}}" data-id="{{task.id}}">
+
+       <div class="container-fluid">
+         <br>
+          <input class="form-control handlebars-update" type="text" name="task[name]" id="handlebars-task-name" placeholder="update task name">
+          <br>
+          <div class="form-group">
+        <textarea class="form-control handlebars-update" name="task[description]" id="handlebars-task-desc" rows="7" placeholder="update description here"></textarea>
+       </div>
+       <div class="form-group">
+           <input type="radio" name="task[iscomplete]" value="true"> Complete<br>
+         </div>
+       <input data-id="{{task.id}}" type="submit" class="btn btn-default" value="update">
+       <br>
+       <div class="destroyTask">
+         <br>
+          <button data-id="{{task.id}}" id="red-button" class="btn btn-danger" value="delete">task completed</button>
+        </div>
+       </form>
+    </div>
+{{/each}}
